@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\Users\eansoft_20210524\eansoft\Board\workspace\scriptStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3930019738.index
+\ex01\src\main\java
+C:\Users\eansoft_20210524\eansoft\Board\workspace\scriptStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2734224914.index
+\ex01\src\main\java
+C:\Users\eansoft_20210524\eansoft\Board\workspace\scriptStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2632525301.index
+\study1\src

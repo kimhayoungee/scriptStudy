@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\eansoft_20210524\eansoft\Board\workspace\scriptStudy\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+728323446.index
+870468935.index
+2734224914.index
+2734224914.index
+1910147392.index
+3812875719.index
+331292208.index
+2516838556.index
