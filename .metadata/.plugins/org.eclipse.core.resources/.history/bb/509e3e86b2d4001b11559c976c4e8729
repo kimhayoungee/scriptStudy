@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	
+	<title>Document</title>
+	
+</head>
+<body>
+	<script>
+	
+//		1. String concatenation	
+		console.log('my' + 'cat');		//mycat
+		console.log('1' + 2);			//12
+		console.log(`string literals: 	 
+			
+		''''	
+		1 + 2 = ${1 + 2}`);				
+		console.log('ellis\'s book');	//'' 안에서 '를 쓰려면 \백슬래쉬 
+		console.log("ellis's \n\tbook");//""안에서 '그냥쓸수있고, \n줄바꿈 \t탭
+		
+//		2. Numeric operators
+		console.log(1 + 1);  //add
+		console.log(1 - 1);  //substract
+		console.log(1 / 1);  //divide
+		console.log(1 * 1);  //multiply
+		console.log(5 % 2);  //remainder
+		console.log(2 ** 3); //exponentiation
+		
+//		3. Increment and decrement operators
+		let counter = 2;
+		const preIncrement = ++counter; //3 하나 증가시킨 다음에 변수에 할당
+		//counter = counter + 1;
+		//preIncrement = counter;
+		console.log(`preIncrement: ${preIncrement}, counter: ${counter}`);
+	
+	</script>
+</body>
+</html>

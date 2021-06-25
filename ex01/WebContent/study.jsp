@@ -216,7 +216,89 @@
 	그냥 콜백함수라고 하기보다는 이렇게 각각의 역할에 맞는 보조함수의 이름으로 따로 불러주는 것이 좋다. 
 */	
 
-/*  3. 커링 */
+/*  3. 커링 
+	      함수와 인자를 다루는 기법 , 함수의 인자를 하나씩 적용해나가다가 필요한 인자가 모두 채워지면 함수 본체를 실행하는 기법 
+	      
+	   1) _curry, _curryr 
+	   
+	function _curry(fn){
+		return function(a){
+			return function(b){
+				return fn(a, b);
+		    }
+	    }
+    }*/
+	//위의 코드로는 add(1, 2) 이렇게는 적용되지 않음, f(b){ return fn(a + b) }라고 함수가 리턴돼버림
+	
+	function _curry(fn){
+		return function(a, b){
+			return arguments.length == 2 ? fn(a, b) : function(b) { return fn(a, b); };
+		}
+	}
+    //이렇게 수정하면 add(1, 2)도 제대로 실행됨 
+    
+	var add = _curry(function(a, b){
+		return a + b;
+	});
+	//본체함수인 _curry 이하 부분을 갖고 있다가 원하는 시점까지 미뤄뒀다가 최종적으로 평가하는 기법 
+	//계속해서 함수가 함수를 대신 실행하거나, 함수가 함수를 리턴하는 식으로 함수를 조합해나갈 수 있도록 만들어감 
+	//함수에 인자를 하나만 적용하면 함수를 리턴하게 된다
+	
+/*	var add = function(a){
+		return function(b){
+			return fn(a, b);
+		}
+	}; */
+	
+	var add10 = add(10);
+	var add5 = add(5);
+	console.log( add10(5) );
+	console.log( add(5)(3) );
+	console.log( add5(3) );
+	console.log( add(10)(3) );	
+	console.log( add(1, 2) );
+	
+	
+	var sub = _curryr(function(a, b){
+		return a - b;
+	});
+	
+	console.log( sub(10, 5) ); //10 - 5로 동작
+	var sub10 = sub(10);     
+	console.log( sub10(5) );   //_curry함수를 적용하면 10 - 5로 동작
+	//sub에 _curry가 아닌 _curryr을 적용하면 5 - 10 으로 동작 
+	
+	//오른쪽부터 인자를 적용해나가는 커리 함수
+    function _curryr(fn){
+    	return function(a, b){
+    		return arguments.length == 2 ? fn(a,b) : function(b) { return fn(b, a); };
+    	}
+    }
+	
+	/* 2) _get 만들어 좀 더 간단하게 하기 
+	오브젝트에 있는 값을 안전하게 창조하는 함수
+	
+	function _get(obj, key){
+		return obj == null ? undefined : obj[key];
+	} */
+	
+	var _get = _curryr(function(obj, key){
+		return obj == null ? undefined : obj[key];
+	});
+	
+	var user1 = users[0];
+	console.log(user1.name);
+	console.log(_get(user1,'name'));
+	console.log(_get('name')(user1));
+	
+	var get_name = _get('name');
+	console.log( get_name(user1) );
+	console.log( get_name(users[3]) );
+	
+	
+	console.log(_map(_filter(users, function(user){return user.age>=30;}), _get('name')));
+	//console.log(users[10].name);
+	//console.log(_get(users[10], 'name'));
 </script>
 
 </body>

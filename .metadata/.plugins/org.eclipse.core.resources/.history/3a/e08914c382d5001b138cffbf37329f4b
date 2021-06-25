@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<link rel="shortcut icon" href="#">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<script>
+/*Function
+fundamental building block in the program
+subprogram can be used multiple times
+performs a task or calculates a value
+JS에서 function은 object! */
+
+		function printHello(){
+			console.log('Hello');
+		}
+		printHello();
+		
+		function log(message){
+			console.log(message);
+		}
+		
+		log('Hello');
+		log(1234);
+		
+/*		2. Parameters
+		primitive parameters: passed by value
+		object parameters: passed by reference */
+		function changeName(obj){
+			obj.name = 'coder';
+		}
+		const ellie = { name: 'ellie' }; 
+		//ellie object를 할당하면 ref가 만들어지고 이 ref는 메모리 어딘가에 ellie를 가리킴 
+		changeName(ellie);
+		console.log(ellie);
+		
+		3. Default parameters (added in ES6)
+		
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<link rel="shortcut icon" href="#">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<script>
+/*Function
+fundamental building block in the program
+subprogram can be used multiple times
+performs a task or calculates a value
+JS에서 function은 object! */
+
+		function printHello(){
+			console.log('Hello');
+		}
+		printHello();
+		
+		function log(message){
+			console.log(message);
+		}
+		
+		log('Hello');
+		log(1234);
+		
+/*		2. Parameters
+		primitive parameters: passed by value
+		object parameters: passed by reference */
+		function changeName(obj){
+			obj.name = 'coder';
+		}
+		const ellie = { name: 'ellie' }; 
+		//ellie object를 할당하면 ref가 만들어지고 이 ref는 메모리 어딘가에 ellie를 가리킴 
+		changeName(ellie);
+		console.log(ellie);
+		
+//		3. Default parameters (added in ES6)
+		function showMessage(message, from = 'unknown') {
+			//if(from === undefined) from = 'unknown'; 이렇게 하지 않고 파라미터 옆에 디폴트 값 지정 가능 
+			console.log(`${message} by ${from}`);
+		}
+		showMessage('Hi!');
+		
+//		4. Rest parameters (added in ES6) ...이라고 쓰면 배열 형태로 전달
+		function printAll(...args){
+			//배열 출력하는 세 가지 방법
+			
+			for(let i=0;i<args.length;i++){
+				console.log(args[i]);
+			}
+			
+			for(const arg of args){
+				console.log(arg);
+			}
+			
+			args.forEach((arg) => console.log(arg));
+		}
+		printAll('dream', 'coding', 'ellie');
+		
+//		5. Local scope
+		let globalMessage = 'global';
+		function printMessage(){
+			let message = 'hello';
+			console.log(message);
+			console.log(globalMessage);
+			function printAnother(){
+				console.log(message);
+				let childMessage = 'hello'; //childMessage는 이 함수 바깥함수에서 불러쓰면 에러
+			}
+		}
+		printMessage();
+		//밖에서는 안이 보이지 않고
+		//안에서만 밖을 볼 수 있다!!	(scope 밖, 안)
+		
+//		6. Return a value
+		function sum(a, b){
+			return a + b;
+		}
+		const result = sum(1, 2);
+		console.log(`sum: ${sum(1, 2)}`);
+		
+//		7. Early return, early exit 위에짧게 아래길게가 좋음 
+		//bad
+		function upgradeUser(user){
+			if(user.point > 10){
+				//long upgrade logic..
+				
+			}
+		}
+		//good
+		function upgradeUser(user){
+			if(user.point <= 10){
+				return;
+			}
+			//long upgrade logic..
+		}
+		
+/*First-class function
+functions are treated like any other variable
+can be assigned as a value to variable
+can be passed as an argument to other functions
+can be returned by another function 
+
+1. Function expression
+a function declaration can be called earlier than it is defined. (hoisted)
+자바스크립트 엔진이 선언된 것을 제일 위로 올려주기 때문에 호이스팅됨 !!
+a function expression is created when the execution reaches it */
+		
+		const print = function () {	// anonymous function 이름 없는 함수 
+			console.log('print');
+		}
+		
+		/*const print = function print () {	// named function 이름 있는 함수 
+			console.log('print');
+		}*/
+		
+		print();
+		const printAgain = print;
+		printAgain();
+		const sumAgain = sum;
+		console.log(sumAgain(1, 3));
+
+//2. Callback function using function expression
+		function randomQuiz(answer, printYes, printNo){
+			if(answer === 'love you'){
+				printYes();
+			} else {
+				printNo();
+			}
+		}
+		const printYes = function () {
+			console.log('yes!');
+		}
+		
+		//named function
+		//better debugging in debugger's stack traces 디버깅할 때 함수 이름이 나오게 하기 위해
+		//recursions 함수 안에서 자신을 호출하기 위해 (이름을 써서)
+		const printNo = function print(){
+			console.log('no!');
+			//print();
+		}
+		randomQuiz('wrong', printYes, printNo);
+		randomQuiz('love you', printYes, printNo);
+		
+		
+	</script>
+
+</body>
+</html>

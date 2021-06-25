@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	
+	<title>Document</title>
+	
+</head>
+<body>
+	<script>
+	
+//		1. String concatenation	
+		console.log('my' + 'cat');		//mycat
+		console.log('1' + 2);			//12
+		console.log(`string literals: 	 
+			
+		''''	
+		1 + 2 = ${1 + 2}`);				//``사용하면 엔터, $ 다 사용가능
+		console.log('ellis\'s book');	//'' 안에서 '를 쓰려면 \백슬래쉬 
+		console.log("ellis's \n\tbook");//""안에서 '그냥쓸수있고, \n줄바꿈 \t탭
+		
+//		2. Numeric operators
+		console.log(1 + 1);  //add
+		console.log(1 - 1);  //substract
+		console.log(1 / 1);  //divide
+		console.log(1 * 1);  //multiply
+		console.log(5 % 2);  //remainder
+		console.log(2 ** 3); //exponentiation
+		
+//		3. Increment and decrement operators
+		let counter = 2;
+		const preIncrement = ++counter; //3 하나 증가시킨 다음에 변수에 할당
+		//counter = counter + 1;
+		//preIncrement = counter;
+		console.log(`preIncrement: ${preIncrement}, counter: ${counter}`);   //3, 3
+		const postIncrement = counter++;
+		//postIncrement = counter;
+		//counter = counter + 1;
+		console.log(`postIncrement: ${postIncrement}, counter: ${counter}`); //3, 4
+		
+		const preDecrement = --counter;
+		console.log(`preDecrement: ${preDecrement}, counter: ${counter}`);   //3, 3
+		const postDecrement = counter--;
+		console.log(`preDecrement: ${postDecrement}, counter: ${counter}`);  //3, 2
+		
+//		4. Assignment operators
+		let x = 3;
+		let y = 6;
+		x += y; // x = x + y; 겹치는 x를 생략
+		x -= y;
+		x *= y;
+		x /= y;
+		
+//		5. Comparison operators
+		console.log(10 < 6);	//less than
+		console.log(10 <= 6);	//less than or equal
+		console.log(10 > 6);	//greater than
+		console.log(10 >= 6);	//greater than or equal
+		
+//		6. Logical operators : ||(or), &&(and), !(not)
+		const value1 = false;
+		const value2 = 4 < 2;
+		
+		//||(or)
+		//or연산자는 하나라도 true가 나오면 거기서 멈춤, finds the first truthy value
+		//value1이 true면 멈추고 check함수 안돌아감 
+		//따라서 가벼운걸 연산 앞쪽에 check같이 무거운 건(expression이나 함수를 호출하는 것) 뒤로 보내서 거르고 걸러서 마지막에 돌릴수 있도록 하기
+		console.log(`or: ${value1 || value2 || check()}`);
+
+		//&&(and)
+		//&&연산자는 false가 나오면 멈춤, finds the first falsy value
+		console.log(`and: ${value && value2 && check()}`);		
+		
+		function check(){
+			for(let i=0;i<10;i++){
+				//wasting time
+				console.log('ㅇ0ㅇ');
+			}
+			return true;
+		}
+		
+		
+		
+		
+	</script>
+</body>
+</html>
