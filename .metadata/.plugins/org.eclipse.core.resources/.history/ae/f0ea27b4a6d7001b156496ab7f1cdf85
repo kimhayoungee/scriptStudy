@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+<body>
+
+	<script>
+		const name='ellie';
+		const age = 4;
+		/*		print(name, age);
+ 		funtcion print(name, age){
+			console.log(name);
+			console.log(age);
+		} */
+		function print(person){
+			console.log(person.name);
+			console.log(person.age);
+		}
+		
+		
+		const ellie = { name: 'ellie', age: 4};
+		print(ellie);
+		print(ellie);
+	</script>
+
+</body>
+</html>
